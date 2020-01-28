@@ -2,11 +2,13 @@
 #define DESELSORT_H
 #include <iostream>
 
-void deSelsort(int* arr, int n, bool ascending){
+void deSelsort(int arr[], int n, bool ascending){
 	//left and right hold the current "state" of the algorithm
 	//eg left = 1, right = n - 2 -> second iteration
-	int minIndex, maxIndex, left = 0, right = n - 1, temp;
-	while(left <= right){
+	int minIndex, maxIndex, temp;
+	int left = 0; 
+	int right = n - 1;
+	while(left < right){
 		minIndex = left;
 		maxIndex = right;
 		for(int i = left + 1; i < right; i++){
@@ -29,13 +31,10 @@ void deSelsort(int* arr, int n, bool ascending){
 
 				}
 			}
-		left++;
-		right--;
+
 		}
-		for(int i = 0; i < 8; i++){
-			std::cout << arr[i] << " "; 
-		}
-		std::cout << std::endl;
+	left++;
+	right--;
 	}
 };
 #endif
