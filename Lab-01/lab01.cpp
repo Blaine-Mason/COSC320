@@ -3,7 +3,10 @@
 
 int main(){
 	int a[8] = {13, 5, 2, 25, 47, 17, 8, 21};
-	deSelsort(a, 8, true);
+	deSelsort(a, 8, false);
+
+	std::cout << "Final Array Sorted: " << std::endl;
+
 	for(int i = 0; i < 8; i++){
 		std::cout << a[i] << " "; 
 	}
