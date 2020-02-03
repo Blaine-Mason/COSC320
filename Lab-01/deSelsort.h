@@ -2,10 +2,29 @@
 #define DESELSORT_H
 #include <iostream>
 
+/*
+ * File Name: deSelsort.h
+ * Method: deSelsort
+ * Return Type: void
+ * In: array of integers "arr", size of "arr", ascending boolean to 
+ *		 enable ascending or descending order.
+ * Out: "arr" is sorted in ascending or descending order respectively
+*/
 void deSelsort(int arr[], int n, bool ascending){
-	int minIndex, maxIndex, temp, i = 0;
+	//minIndex -> holds the index of the minimun value
+	//maxindex -> holds the index of the maximum value
+	//temp -> holds a temp value for swapping
+	//leftMost -> holds the index of the left most position
+	//swapCount -> holds the count of swaps in the loop, for demonstration
+	int minIndex, maxIndex, temp, leftMost = 0, swapCount = 0;
+
+
+	//while the ith index(0, 1, 2...) is no larger than the nth-ith-1(n-2, n-1, n)
 	while(i <= n-i-1){
+		//rightMost -> holds the index of the right most position
 		int rightMost = n-i-1;
+
+		//left the min and max indecies be the left and right most
 		minIndex = i;
 		maxIndex = rightMost;
 		for(int j = i + 1; j <= rightMost; j++){
