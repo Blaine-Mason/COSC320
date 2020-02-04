@@ -27,7 +27,9 @@ void deSelsort(int arr[], int n, bool ascending){
 		//left the min and max indecies be the left and right most
 		minIndex = leftMost;
 		maxIndex = rightMost;
+		//walk the array finding the min and max indicies
 		for(int j = leftMost + 1; j <= rightMost; j++){
+			//if ascending is true sort in ascending order else, descending
 			if(ascending){
 				if(arr[j] <= arr[minIndex]){
 					minIndex = j;
@@ -45,28 +47,43 @@ void deSelsort(int arr[], int n, bool ascending){
 			}
 		}
 
-		
+		//perform the swap for the minimum element
+		//temp -> left most value
+		//arr[leftMost] -> value of minimum element
+		//arr[minIndex] -> left most value 
 		temp = arr[leftMost];
 		arr[leftMost] = arr[minIndex];
 		arr[minIndex] = temp;
 		swapCount++;
-	
+		
+		//perform the swap for the maximum element
+		//temp -> right most value
+		//arr[rightMost] -> maximum element
+		//arr[maxIndex] -> right most value
+		// 
 		temp = arr[rightMost];
 		arr[rightMost] = arr[maxIndex];
 		arr[maxIndex] = temp;
 		swapCount++;
 		
+		//display the array for each iteration of the while loop
 		for(int k = 0; k < n; k++){
 			std::cout << arr[k] << " ";
 		}
 		std::cout << std::endl;
 
-
+		//Display info for algorithm analysis
 		std::cout << leftMost + 1 << " pass" << std::endl;
 		std::cout << "Max Value: " << arr[rightMost] << std::endl << "Min Value: " << arr[leftMost] << std::endl;
 		
 		std::cout << "Total Swaps: " << swapCount << std::endl << std::endl;
-
+		
+		//increase the leftMost in order to shift the rightMost left ex:
+		//[0,   0,    9,   3,   2,   4]
+		// ^-leftMost       rightMost^
+		//post increase:
+		//[0,   0,    9,   3,   2,   4]
+		//			^-leftMost      ^-rightMost
 		leftMost++;
 	}
 };

@@ -22,7 +22,6 @@ int main(){
 		b[i] = rand()%100;
 	}
 	
-	deSelsort(b, 1000, true);
 	deSelsort(a, 8, false);
 
 	std::cout << "Final Array Sorted: " << std::endl;
