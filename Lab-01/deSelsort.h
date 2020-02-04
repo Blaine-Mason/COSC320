@@ -20,14 +20,14 @@ void deSelsort(int arr[], int n, bool ascending){
 
 
 	//while the ith index(0, 1, 2...) is no larger than the nth-ith-1(n-2, n-1, n)
-	while(i <= n-i-1){
+	while(leftMost <= n-leftMost-1){
 		//rightMost -> holds the index of the right most position
-		int rightMost = n-i-1;
+		int rightMost = n-leftMost-1;
 
 		//left the min and max indecies be the left and right most
-		minIndex = i;
+		minIndex = leftMost;
 		maxIndex = rightMost;
-		for(int j = i + 1; j <= rightMost; j++){
+		for(int j = leftMost + 1; j <= rightMost; j++){
 			if(ascending){
 				if(arr[j] <= arr[minIndex]){
 					minIndex = j;
@@ -46,14 +46,15 @@ void deSelsort(int arr[], int n, bool ascending){
 		}
 
 		
-		temp = arr[i];
-		arr[i] = arr[minIndex];
+		temp = arr[leftMost];
+		arr[leftMost] = arr[minIndex];
 		arr[minIndex] = temp;
-
-
+		swapCount++;
+	
 		temp = arr[rightMost];
 		arr[rightMost] = arr[maxIndex];
 		arr[maxIndex] = temp;
+		swapCount++;
 		
 		for(int k = 0; k < n; k++){
 			std::cout << arr[k] << " ";
@@ -61,10 +62,12 @@ void deSelsort(int arr[], int n, bool ascending){
 		std::cout << std::endl;
 
 
-		std::cout << i + 1 << " pass" << std::endl;
-		std::cout << "Max Value: " << arr[rightMost] << std::endl << "Min Value: " << arr[i] << std::endl << std::endl;
-	
-		i++;
+		std::cout << leftMost + 1 << " pass" << std::endl;
+		std::cout << "Max Value: " << arr[rightMost] << std::endl << "Min Value: " << arr[leftMost] << std::endl;
+		
+		std::cout << "Total Swaps: " << swapCount << std::endl << std::endl;
+
+		leftMost++;
 	}
 };
 #endif

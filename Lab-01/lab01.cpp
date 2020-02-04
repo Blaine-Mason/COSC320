@@ -1,5 +1,7 @@
 #include <iostream>
 #include "deSelsort.h"
+#include <cstdlib>
+
 
 /* Author: Blaine Mason
  * Date: 2 Feburary 2020
@@ -10,8 +12,17 @@
 */
 
 int main(){
+
+	srand(time(0));
 	//Sample Array 
 	int a[8] = {13, 5, 2, 25, 47, 17, 8, 21};
+	int b[1000];
+	
+	for(int i = 0; i < 1000; i++){
+		b[i] = rand()%100;
+	}
+	
+	deSelsort(b, 1000, true);
 	deSelsort(a, 8, false);
 
 	std::cout << "Final Array Sorted: " << std::endl;
