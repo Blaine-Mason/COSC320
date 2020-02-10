@@ -10,7 +10,7 @@
  *		 enable ascending or descending order.
  * Out: "arr" is sorted in ascending or descending order respectively
 */
-void deSelsort(int arr[], int n, bool ascending){
+void deSelsort(int arr[], int n){
 	//minIndex -> holds the index of the minimun value
 	//maxindex -> holds the index of the maximum value
 	//temp -> holds a temp value for swapping
@@ -30,20 +30,11 @@ void deSelsort(int arr[], int n, bool ascending){
 		//walk the array finding the min and max indicies
 		for(int j = leftMost + 1; j <= rightMost; j++){
 			//if ascending is true sort in ascending order else, descending
-			if(ascending){
-				if(arr[j] <= arr[minIndex]){
-					minIndex = j;
-				}
-				if(arr[j] >= arr[maxIndex]){
-					maxIndex = j;
-				}
-			}else{
-				if(arr[j] >= arr[minIndex]){
-					minIndex = j;
-				}
-				if(arr[j] <= arr[maxIndex]){
-					maxIndex = j;
-				}
+			if(arr[j] <= arr[minIndex]){
+				minIndex = j;
+			}
+			if(arr[j] >= arr[maxIndex]){
+				maxIndex = j;
 			}
 		}
 
@@ -59,8 +50,7 @@ void deSelsort(int arr[], int n, bool ascending){
 		//perform the swap for the maximum element
 		//temp -> right most value
 		//arr[rightMost] -> maximum element
-		//arr[maxIndex] -> right most value
-		// 
+		//arr[maxIndex] -> right most value 
 		temp = arr[rightMost];
 		arr[rightMost] = arr[maxIndex];
 		arr[maxIndex] = temp;
