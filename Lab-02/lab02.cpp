@@ -13,6 +13,7 @@ int main(){
 	for(int i = 0; i < ARRSIZE; i++){
 		arr[i] = rand()%RANDOMLIMIT;
 	}
+	deSelsort(arr, ARRSIZE, true); 
 	int sumFailCom = 0;
 	int temp = 0;
 	int successTotal = 0;
@@ -24,10 +25,10 @@ int main(){
 		}else{
 			successTotal++;
 		}
-		std::cout << j << std::endl;
-		std::cout << successTotal << std::endl;
-		std::cout << sumFailCom << std::endl;
 	}
+	std::cout << "Comparison for Fail: " << sumFailCom << std::endl;
+	std::cout << "Successful Searches: " << successTotal << std::endl;
+	std::cout << "Worst Case: " << sumFailCom/(RANDOMVALUES - successTotal) << std::endl;
 		
 	return 0;
 }

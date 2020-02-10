@@ -67,11 +67,11 @@ void deSelsort(int arr[], int n, bool ascending){
 		swapCount++;
 		
 		//display the array for each iteration of the while loop
-		/*for(int k = 0; k < n; k++){
-			std::cout << arr[k] << " ";
-		}
-		std::cout << std::endl;
-		*/
+		//for(int k = 0; k < n; k++){
+			//std::cout << arr[k] << " ";
+		//}
+		//std::cout << std::endl;
+		
 		//Display info for algorithm analysis
 		//std::cout << leftMost + 1 << " pass" << std::endl;
 		//std::cout << "Max Value: " << arr[rightMost] << std::endl << "Min Value: " << arr[leftMost] << std::endl;

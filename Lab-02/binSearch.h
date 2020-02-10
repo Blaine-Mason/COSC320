@@ -4,7 +4,6 @@
 #include "deSelsort.h"
 
 int binSearch(int arr[], int size, int target, int& compare){
-	deSelsort(arr, size, true);
 	int left = 0, right = size -1;
 	while (left <= right){
 		int middle = (left + right)/2;
