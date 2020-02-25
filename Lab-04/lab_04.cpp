@@ -102,12 +102,23 @@ void postorderT(tnode<char> *expr){
 void prefixoutput(tnode<char> *exp){
 	if(!exp){
 		return;
-	}else{
-		prefixoutput(exp->left);
-		prefixoutput(exp->right);
-		std::cout << exp->nodeValue << " ";
 	}
+
+
+	tnode<char>* reversed = reverseTree(exp);
+	prefixoutput(reversed->left);
+	prefixoutput(reversed->right);
+	if(reversed->nodeValue == '('){
+		reversed->nodeValue = ')';
+	}else if(reversed->nodeValue == ')'){
+		reversed->nodeValue = '(';
+	}else{
+		std::cout << reversed->nodeValue << " ";
+	}
+		
 }
+	
+	
 
 tnode<char> *buildExpTree(const string& exp)
 {

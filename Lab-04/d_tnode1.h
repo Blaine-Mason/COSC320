@@ -83,6 +83,10 @@ void displayTree(tnode<T> *t, int maxCharacters);
 // delete the nodes in the shadow tree
 void deleteShadowTree(tnodeShadow *t);
 
+//Reverse Tree
+template<typename T>
+tnode<T>* reverseTree(tnode<T> *t);
+
 //void prefixoutput(tnode<char> *exp);
 tnode<char> *buildTree(int n)
 {
@@ -390,4 +394,17 @@ void prefixoutput(tnode<char> *exp){
 	}
 }
 */
+template <typename T>
+tnode<T>* reverseTree(tnode<T> *t){
+	if (!t){
+		return NULL;
+	}
+	tnode<T>* r;
+	tnode<T>* l;
+	r = reverseTree(t->right);
+	l = reverseTree(t->left); 
+	t->left = r;
+	t->right = l;
+	return t;
+}
 #endif   // TREE_LIBRARY_FUNCTIONS
