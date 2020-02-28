@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 #include <stack>
 #include <string>
 #include "d_tnode.h"
@@ -11,65 +10,86 @@ void prefixoutput(tnode<char> *exp);
 void postorderT(tnode<char> *expr);
 void preorderT(tnode<char> *expr);
 
-
+/*
+* File Name: Lab_04.cpp
+* Author: Blaine Mason
+* Assignment: Lab-04
+*/
 
 
 
 int main(){
+
 	tnode<char> *oneponeTree;
 	tnode<char> *oneptwoTree;
 	tnode<char> *onepthreeTree;
 
-	string uno = "ab*";
-	string dos = "ab+c*";
-	string tres = "ab*cd/+";
+	//The infix expressions asked to convert to pre-order and post order
+	string uno = "a*b";
+	string dos = "a+b+c";
+	string tres = "a+b*c/d-e";
 
+	//Convert to postfix to be passed into buildExpTree
+	infix2Postfix one(uno);
+	infix2Postfix two(dos);
+	infix2Postfix three(tres);
+	uno = one.postfix();
+	dos = two.postfix();
+	tres = three.postfix();
+
+	//Construct the Expression Trees
 	oneponeTree = buildExpTree(uno);
 	oneptwoTree = buildExpTree(dos);
 	onepthreeTree = buildExpTree(tres);
 
 
-
+	/*
+	* Output the Pre-Order and Post-Order
+	*/
+	std::cout << "Pre-Order" << std::endl;
 	preorderT(oneponeTree);
-  std::cout << std::endl;
+  	std::cout << std::endl;
 	preorderT(oneptwoTree);
-  std::cout << std::endl;
+  	std::cout << std::endl;
 	preorderT(onepthreeTree);
 	std::cout << std::endl;
 
-
+	std::cout << "Post-Order" << std::endl;
 	postorderT(oneponeTree);
-  std::cout << std::endl;
+  	std::cout << std::endl;
 	postorderT(oneptwoTree);
-  std::cout << std::endl;
+  	std::cout << std::endl;
 	postorderT(onepthreeTree);
 	std::cout << std::endl;
 
-	prefixoutput(onepthreeTree);
+
+
+	//Take an expression from the user
+	string user_exp;
+	std::cout << "Enter the expression: ";
+	std::cin >> user_exp;
+
+	//Convert to postfix to build an expression tree
+	infix2Postfix usr(user_exp);
+	user_exp = usr.postfix();
+	
+	//Build expression tree
+	tnode<char> *user_Input;
+	user_Input = buildExpTree(user_exp);
+	
+	//Output Prefix and Postfix form 
+	std::cout << "Prefix form: ";
+	prefixoutput(user_Input);
+	std::cout << std::endl;
+	std::cout << "Postfix form: ";
+	postorderT(user_Input);
 	std::cout << std::endl;
 
 
-  string user_exp;
-  std::cout << "Enter the expression: ";
-  std::cin >> user_exp;
-
-  infix2Postfix usr(user_exp);
-  user_exp = usr.postfix();
-  
-  tnode<char> *user_Input;
-  user_Input = buildExpTree(user_exp);
-  
-  std::cout << "Prefix form: ";
-  prefixoutput(user_Input);
-  std::cout << std::endl;
-  std::cout << "Postfix form: ";
-  postorderT(user_Input);
-  std::cout << std::endl;
-
-  int size = user_exp.length();
-
-  std::cout << "Expression tree: " << std::endl;
-  displayTree(user_Input, size);
+	int size = user_exp.length();
+	//Display the Created tree
+	std::cout << "Expression tree: " << std::endl;
+	displayTree(user_Input, size);
   
 
 	return 0;
@@ -77,7 +97,12 @@ int main(){
 
 
 
-
+/*
+* IN: tnode
+* OUT: Void
+* Method: Outputs the given expression in 
+*		  pre-order
+*/
 void preorderT(tnode<char> *expr){
 	if(!expr){
 		return;
@@ -88,6 +113,13 @@ void preorderT(tnode<char> *expr){
 		postorderT(expr->right);
 	}
 }
+
+/*
+* IN: tnode
+* OUT: Void
+* Method: Outputs the given expression in 
+*		  post-order
+*/
 void postorderT(tnode<char> *expr){
 	if(!expr){
 		return;
@@ -99,23 +131,19 @@ void postorderT(tnode<char> *expr){
 	}
 }
 
+/*
+* IN: tnode
+* OUT: Void
+* Method: Outputs the given expression in 
+*		  prefix
+*/
 void prefixoutput(tnode<char> *exp){
 	if(!exp){
 		return;
 	}
-
-
-	tnode<char>* reversed = reverseTree(exp);
-	prefixoutput(reversed->left);
-	prefixoutput(reversed->right);
-	if(reversed->nodeValue == '('){
-		reversed->nodeValue = ')';
-	}else if(reversed->nodeValue == ')'){
-		reversed->nodeValue = '(';
-	}else{
-		std::cout << reversed->nodeValue << " ";
-	}
-		
+	std::cout << exp->nodeValue << " ";
+	prefixoutput(exp->left);
+	prefixoutput(exp->right);
 }
 	
 	
@@ -145,8 +173,6 @@ tnode<char> *buildExpTree(const string& exp)
 		// extract the current token and increment i
 		token = exp[i];
 		i++;
-
-    printf("Character is: %c\n", token);
 
 		// see if the token is an operator or an operand
 		if (token == '+' || token == '-' || token == '*' || token == '/')

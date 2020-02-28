@@ -383,28 +383,5 @@ void deleteShadowTree(tnodeShadow *t)
 		delete t;
 	}
 }
-/*
-void prefixoutput(tnode<char> *exp){
-	if(!exp){
-		return;
-	}else{
-		prefixoutput(exp->left);
-		prefixoutput(exp->right);
-		std::cout << exp->nodeValue << std::endl;
-	}
-}
-*/
-template <typename T>
-tnode<T>* reverseTree(tnode<T> *t){
-	if (!t){
-		return NULL;
-	}
-	tnode<T>* r;
-	tnode<T>* l;
-	r = reverseTree(t->right);
-	l = reverseTree(t->left); 
-	t->left = r;
-	t->right = l;
-	return t;
-}
+
 #endif   // TREE_LIBRARY_FUNCTIONS
