@@ -5,27 +5,43 @@ class integer
 {
 	public:
 		// constructor. initialize intValue and set count = 1
-		integer(int n);
+		integer(int n){
+			intValue = n;
+			count = 1;
+		}
 
 		// return intValue
-		int getInt();
+		int getInt(){
+			return intValue;
+		}
 		
 
 		// return count
-		int getCount();
+		int getCount(){
+			return count;
+		}
 		
 
 		// increment count
-		void incCount();
+		void incCount(){
+			count++;
+		}
 		
 
 		// compare integer objects by intValue
-		friend bool operator< (const integer& lhs, const integer& rhs);
+		friend bool operator< (const integer& lhs, const integer& rhs){
+			return lhs.intValue < rhs.intValue;
+		}
 
-		friend bool operator== (const integer& lhs, const integer& rhs);
+		friend bool operator== (const integer& lhs, const integer& rhs){
+			return lhs.intValue == rhs.intValue;
+		}
 		
 		// output object in format intValue (count)
-		friend ostream& operator<< (ostream& ostr, const integer& obj);
+		friend std::ostream& operator<< (std::ostream& ostr, const integer& obj){
+			ostr << obj.intValue << " (" << obj.count << ")";
+			return ostr;
+		}
 		
 	private:
 		// the integer and its count

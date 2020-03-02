@@ -242,6 +242,11 @@ static bool graphWinOpen;
 			// repeated tree draw function. maxCharacters is the
 			// largest number of characters required to draw
 			// the value of a node
+		
+		stnode<T> *findNode(const T& item) const;
+			// search for item in the tree. if it is in the tree,
+			// return a pointer to its node; otherwise, return NULL.
+			// used by find() and erase()
 
 	private:
 		stnode<T> *root;
@@ -262,11 +267,6 @@ static bool graphWinOpen;
 		void deleteTree(stnode<T> *t);
 			// recursive function used by destructor and assignment
 			// operator to delete all the nodes in the tree
-
-		stnode<T> *findNode(const T& item) const;
-			// search for item in the tree. if it is in the tree,
-			// return a pointer to its node; otherwise, return NULL.
-			// used by find() and erase()
 
 		stnodeShadow *buildShadowTree(stnode<T> *t, int level, int& column);
 			// recursive function that builds a subtree of the shadow tree
