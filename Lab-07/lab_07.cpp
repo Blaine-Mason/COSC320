@@ -14,9 +14,10 @@ int main(){
     ifstream sptst ("dict.dat");
     if(sptst.is_open()){
         string wrd;
-        for(int i = 0; i < buck; i++){
+        for(int i = 0; i < 25025; i++){
             sptst >> wrd;
             htable.insert(wrd);
+            //std::cout << wrd << std::endl;
         }
     }else{
         std::cout << "File DNE" << std::endl;
