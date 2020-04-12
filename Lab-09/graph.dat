@@ -1,0 +1,7 @@
+m //(m is the number of vertices in graph)
+vertex_1 vertex_2 ... vertex_m
+n //(number of edges)
+source_1 destination_1 weight_1 //(weight_1 is the weight of edge from source_1 to destination_1)
+source_2 destination_2 weight_2 //(weight_2 is the weight of edge from source_1 to destination_1)
+.....
+source_n destination_n weight_n //(weight_n is the weight of edge from source_1 to destination_1)
