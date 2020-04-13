@@ -27,7 +27,7 @@ void writeVector(const vector<T>& v);
 // display the list. follow the output of each list element
 // by separator. default value of separator = "  "
 template <typename T>
-void writeList(const list<T>& alist, const string& separator = "  ");
+void writeList(const list<T>& alist, const string& separator);
 
 // display the search tree. follow the output of each list element
 // by separator. default value of separator = "  "
@@ -38,7 +38,7 @@ void writeSTree(const stree<T>& t, const string& separator);
 // range [first, last). output separator between items.
 // default value of separator = "  "
 template <typename Iterator>
-void writeContainer(Iterator first, Iterator last, const string& separator = "  ");
+void writeContainer(Iterator first, Iterator last, const string& separator);
 
 // display the key-value pairs in the map. follow the output of
 // each pair by separator. default value of separator = "  "
@@ -167,7 +167,7 @@ void writeList(const list<T>& alist, const string& separator)
 }
 
 template <typename T>
-void writeSTree(const stree<T>& t, const string& separator = "  ")
+void writeSTree(const stree<T>& t, const string& separator)
 {
 	typename stree<T>::const_iterator iter = t.begin();
 
@@ -194,7 +194,7 @@ void writeContainer(Iterator first, Iterator last,
 }
 
 template <typename Key, typename T>
-void writeMap(const map<Key,T>& m, const string& separator = "  ")
+void writeMap(const map<Key,T>& m, const string& separator)
 {
 	typename map<Key, T>::const_iterator iter = m.begin();
 
